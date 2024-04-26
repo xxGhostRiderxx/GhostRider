@@ -1,0 +1,58 @@
+class InternshipChatbot:
+    def __init__(self):
+        self.responses = {
+            "register_for_internship": 
+                "Before you embark on your internship application journey, please check whether you have fulfilled the following requirements:\n"
+                "a. Meet all the course pre-requisites.\n"
+                "You may refer the Professional Internship/Attachment course outline to find out the pre-requisites. Alternatively, you may contact your school undergraduate office for better clarification.\n"
+                "b. Your attachment flag will be updated as “eligible” once you have fulfilled the pre-requisites.\n"
+                "c. Complete the Safety Quiz via NTULEARN with a minimum score of 8/10.\n"
+                "Please refer to the InPlace Guides for the Workplace Safety Quiz Guide.\n"
+                "Note: Your safety quiz result will only be updated onto InPlace the next day.",
+            "self_source_application": 
+                "Apart from the selection rounds in InPlace, you are highly encouraged to source for your own internship placement. You should start as early as possible to increase your chance of securing placement of your choice.\n"
+                "When self-sourcing an internship placement, you MUST look out for the following conditions before it can be considered as an internship placement",
+            "self_source_form": 
+                "Download the self-source application form from your respective school site\n"
+                "Organisation to complete page 1-3 of the self-source application form\n"
+                "Student to complete page 4 of the self-source application form\n"
+                "Submit Self-source application form via InPlace by the stipulated deadline\n"
+                "The acceptance of the organisation and the programme scope is subject to the final approval by your School and CAO. Please wait for confirmation from CAO after the submission of the above forms. DO NOT assume that your self-sourced placement is confirmed.\n"
+                "Once your self-sourced placement is approved by the school, you will be assigned to the respective organisation for your official attachment. Your self-sourced organisation will receive a confirmation from CAO. You are not allowed to request for a change in organisation. You should also refrain from participating in the on-going application and selection phases. You have to stay committed and complete your internship with the approved organisation.",
+            "offer_and_acceptance": 
+                "An organization may contact you through one of the followings to make an offer.\n"
+                "• Email notification generated via InPlace\n"
+                "• Email or phone call from the organisation\n"
+                "• For students who have received the offer via email or phone call from organisation, please inform the employer to make an offer via InPlace.\n"
+                "Before accepting an offer, think through carefully as you are not allowed to renege the offer after acceptance.\n"
+                "Reneging of offer will lead to disciplinary action as well as dropped from participating in the internship in the next semester.\n"
+                "Please accept or decline the offer by the deadline specified by the organisation or within one week of the offer if no deadline is given by the organisation.\n"
+                "If you need more time to consider the offer, please check with the organisation directly if they can extend the deadline.",
+            "internship_period": 
+                "Students are required to adhere to the official internship period as stipulated in the academic calendar, shifting of internship period is strictly not allowed.",
+            "placement_letter": 
+                "The placement letter is a confirmation of your credit-bearing internship with the organisation. You may request for the letter after you have been formally assigned to the organisation.",
+            "how_to_request_letter": 
+                "SELF-HELP ON THE INTERNSHIP PLACEMENT LETTER\n"
+                "Login to IMS portal and select Staff and Students.\n"
+                "Click on the Shared Documents tab.\n"
+                "Click on “Download” to retrieve the Credit Bearing Placement Letter.\n"
+                "Things to Note:\n"
+                "The internship period indicated in the placement letter will be based on the start\n"
+                "and end date reflected in the IMS portal.\n"
+                "The internship period before and/or after the official period will be considered as\n"
+                "non-credit bearing. Students can request the non-credit bearing placement letter via\n"
+                "this link.\n"
+                "The internship placement letter document will be made available only after your\n"
+                "internship placement has been formalised and reflected in the IMS portal.\n"
+                "Processing time - Please allow us 5 working days to process your request",
+            "how_to_navigate_inplace": 
+                "Here is a guide on how to navigate on Inplace: https://blogs.ntu.edu.sg/ntuinternship/inplace-guide/"
+        }
+    
+    def get_response(self, query):
+        return self.responses.get(query.lower(), "Sorry, I couldn't understand your query. Please try again.")
+
+# Example usage:
+chatbot = InternshipChatbot()
+print(chatbot.get_response("Offer and acceptance"))
