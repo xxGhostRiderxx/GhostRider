@@ -1,0 +1,47 @@
+import requests
+from bs4 import BeautifulSoup
+
+def parse_connected_devices(router_ip, username, password):
+    # Login to the router's admin panel
+    login_url = f"http://{router_ip}/login"
+    session = requests.Session()
+    login_data = {"username": username, "password": password}
+    response = session.post(login_url, data=login_data)
+
+    # Check if login was successful
+    if response.status_code != 200:
+        print("Failed to login to the router's admin panel.")
+        return
+
+    # Get the page containing connected devices
+    connected_devices_url = f"http://{router_ip}/connected_devices"
+    connected_devices_page = session.get(connected_devices_url)
+
+    # Parse the HTML response
+    soup = BeautifulSoup(connected_devices_page.content, 'html.parser')
+
+    # Extract connected device information
+    connected_devices = []
+    device_rows = soup.find_all('tr')
+    for row in device_rows:
+        columns = row.find_all('td')
+        if len(columns) >= 2:
+            device_name = columns[0].text.strip()
+            device_ip = columns[1].text.strip()
+            connected_devices.append((device_name, device_ip))
+
+    # Print connected device information
+    print("Connected Devices:")
+    for device in connected_devices:
+        print(f"Name: {device[0]}, IP Address: {device[1]}")
+
+    # Logout from the router's admin panel
+    logout_url = f"http://{router_ip}/logout"
+    session.get(logout_url)
+
+# Example usage
+router_ip = "192.168.1.1"  # Replace with your router's IP address
+username = "admin"          # Replace with your router's admin username
+password = "password"       # Replace with your router's admin password
+
+parse_connected_devices(router_ip, username, password)
